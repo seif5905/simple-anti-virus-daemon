@@ -35,6 +35,7 @@ do
     case $input in
         1)
             cp ${file_array[$file_number]} ${1}
+            echo $(basename ${file_array[$file_number]}) >> whitelist.txt
             rm ${file_array[$file_number]}
             echo Restored ${file_array[$file_number]} to dir
             break
@@ -49,5 +50,3 @@ do
             ;;
     esac
 done
-    
-
