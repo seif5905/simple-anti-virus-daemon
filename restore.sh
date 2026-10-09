@@ -1,9 +1,12 @@
 #!/bin/bash
 
+# 1-> dir, 2-> malicious_dir, 3-> wait time in sec
+
+
 while true
 do
     shopt -s nullglob
-    file_array=(malicious_dir/*)
+    file_array=(/*)
 
     if [[ ${#file_array[@]} -eq 0 ]]; then
         echo No malicious files to review
@@ -13,7 +16,7 @@ do
 
     echo Choose Number of File to Interact with
     i=1
-    for file in malicious_dir/*
+    for file in ${2}/*
     do
         echo "$i) $file"
         ((i++))
