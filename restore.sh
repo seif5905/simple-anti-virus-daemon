@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# 1-> dir, 2-> malicious_dir, 3-> wait time in sec
+# 1-> dir, 2-> malicious_dir
 
 
 while true
 do
     shopt -s nullglob
-    file_array=(/*)
+    file_array=(${2}/*)
 
     if [[ ${#file_array[@]} -eq 0 ]]; then
         echo No malicious files to review
@@ -34,7 +34,7 @@ do
 
     case $input in
         1)
-            cp ${file_array[$file_number]} dir
+            cp ${file_array[$file_number]} ${1}
             rm ${file_array[$file_number]}
             echo Restored ${file_array[$file_number]} to dir
             break
